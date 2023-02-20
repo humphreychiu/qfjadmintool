@@ -38,7 +38,11 @@ public class DynamicSessionMain {
                 if (value.startsWith("add")) {
                     String client = value.split(" ")[1];
                     var size = targetCompIdAcceptors.size();
-                    targetCompIdAcceptors.put(client, addAcceptor(size, client));
+                    if (targetCompIdAcceptors.containsKey(targetCompIdAcceptors)) {
+                        LOGGER.warn("session {} already exists!", client);
+                    } else {
+                        targetCompIdAcceptors.put(client, addAcceptor(size, client));
+                    }
                 } else if (value.startsWith("deactivate")) {
                     String client = value.split(" ")[1];
                     if (targetCompIdAcceptors.containsKey(client)) {
